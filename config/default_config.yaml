@@ -1,0 +1,97 @@
+# Default Configuration for EEG Super-Resolution
+
+# Model Architecture
+model:
+  name: "reconstruction_base_patch250_250"
+  input_size: 250
+  patch_size: 250
+  embed_dim: 256
+  encoder_depth: 4
+  decoder_depth: 4
+  num_heads: 12
+  mlp_ratio: 4.0
+  layer_scale_init_value: 0.1
+  drop_path: 0.2
+  drop_rate: 0.1
+  attn_drop: 0.1
+  use_abs_pos_emb: true
+  use_rel_pos_bias: false
+
+# Training Configuration
+training:
+  batch_size: 1000
+  epochs: 2000
+  warmup_epochs: 5
+  save_ckpt_freq: 5
+  gradient_accumulation_steps: 1
+  
+  # Optimizer
+  optimizer:
+    type: "adamw"
+    lr: 5e-3
+    warmup_lr: 1e-6
+    min_lr: 1e-5
+    weight_decay: 0.05
+    opt_eps: 1e-8
+    opt_betas: [0.9, 0.98]
+    clip_grad: 3.0
+
+# Dataset Configuration
+dataset:
+  name: "THU_SSVEP_Benchmark"
+  root_dir: "./dataset"
+  sampling_rate: 250
+  channels:
+    # Standard 9 occipital channels for SSVEP
+    target: ["PZ", "PO5", "PO3", "POZ", "PO4", "PO6", "O1", "OZ", "O2"]
+    # Full montage for reconstruction
+    full: ["PZ", "PO5", "PO3", "POZ", "PO4", "PO6", "O1", "OZ", "O2", 
+           "P7", "P5", "P3", "P1", "P2", "P4", "P6", "P8"]
+  
+  # Data preprocessing
+  preprocessing:
+    latency: 0.14  # seconds to remove VEP onset
+    train_window: 3.0  # seconds
+    test_window: 3.0   # seconds
+    normalization: "z-score"  # or "minmax"
+
+# Experiment Configuration
+experiment:
+  name: "eeg_super_resolution"
+  output_dir: "./checkpoints"
+  log_dir: "./logs"
+  device: "cuda"
+  num_workers: 10
+  pin_memory: true
+  seed: 42
+
+# Cross-validation
+cross_validation:
+  n_folds: 6
+  test_subjects: [1, 2, 3, 4, 5]  # subjects to use for testing
+
+# Super-resolution specific
+super_resolution:
+  input_channels: 7   # reduced channel count
+  output_channels: 15 # target channel count
+  reconstruction_loss: "mse"  # or "l1", "cosine"
+  masking_ratio: 0.75  # for self-supervised pretraining
+
+# SSVEP Classification
+ssvep:
+  frequencies: [8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0,
+                8.2, 9.2, 10.2, 11.2, 12.2, 13.2, 14.2, 15.2,
+                8.4, 9.4, 10.4, 11.4, 12.4, 13.4, 14.4, 15.4,
+                8.6, 9.6, 10.6, 11.6, 12.6, 13.6, 14.6, 15.6,
+                8.8, 9.8, 10.8, 11.8, 12.8, 13.8, 14.8, 15.8]
+  phases: [0, 0.5, 1, 1.5, 0, 0.5, 1, 1.5,
+           0.5, 1, 1.5, 0, 0.5, 1, 1.5, 0,
+           1, 1.5, 0, 0.5, 1, 1.5, 0, 0.5,
+           1.5, 0, 0.5, 1, 1.5, 0, 0.5, 1,
+           0, 0.5, 1, 1.5, 0, 0.5, 1, 1.5]
+  
+# Evaluation Metrics
+evaluation:
+  metrics: ["mse", "correlation", "snr", "accuracy"]
+  save_reconstructions: true
+  visualize_results: true 
