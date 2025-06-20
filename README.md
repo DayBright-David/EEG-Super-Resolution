@@ -27,6 +27,7 @@ Our approach employs a Transformer-based framework with the following components
 2. **Spatial and Temporal Embeddings**: Special attention to both spatial and temporal characteristics
 3. **Random Masking Strategy**: Self-supervised pretraining with random patch masking
 4. **Super-Resolution Decoder**: Reconstructs high-density EEG from sparse electrode data
+
 ![Model Architecture](./docs/model.png)
 
 ## Installation
@@ -237,9 +238,13 @@ The project uses YAML configuration files for easy parameter management. Edit `c
 Our experiments on the THU SSVEP Benchmark demonstrate:
 
 - **High-fidelity reconstruction**: The super-resolved EEG data achieves waveform reconstruction accuracy approaching full 15-channel montage
+
 ![Reconstruction Results](./docs/reconstruction.png)
+
 - **Super-resolution for SSVEP BCI**: Enables high-performance SSVEP BCI with reduced electrode setup complexity
+
 ![SSVEP Results](./docs/super_resolution.png)
+
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
