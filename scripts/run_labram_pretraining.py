@@ -113,7 +113,7 @@ def get_args():
     
 
     # dataset parameters
-    parser.add_argument('--dataset_root_dir', default='../dataset/Benchmark', type=str,
+    parser.add_argument('--dataset_root_dir', default='dataset', type=str,
                         help='Root path of the dataset')
     parser.add_argument('--srate', default=250, type=int,
                         help='sampling rate of the dataset')

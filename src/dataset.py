@@ -673,9 +673,6 @@ def build_Benchmark_dataset_for_pretraining(root_dir, winLEN=1, remove_idx=1):
     num_subbands = 1  # 不做filterbank
     harmonic_num = 5
     delay_num = 0  # 数据增强时延迟的个数
-    electrodes_adjacent_matrix = np.loadtxt(
-        root_dir + '/' + dataset_name + '/Benchmark_9ch_normalized_adjacency_matrix.csv', delimiter=',')
-    #interpolation_matrices = np.load(root_dir + '/' + dataset_name + '/interpolation_matrix/9ch_interpolation_matrix.npy')
 
     train_data = []
     test_data = []
@@ -716,13 +713,8 @@ def build_Benchmark_dataset_for_finetune(root_dir, winLEN=1, sub=1, test_block_i
     #ssvep_selected_channels = ['PZ', 'PO5', 'PO3', 'POZ', 'PO4', 'PO6', 'O1', 'OZ', 'O2']
     # 使用枕区15导进行训练
     ssvep_selected_channels = ['P5', 'P6', 'P1', 'P2', 'PO3', 'PO4', 'P3', 'P4', 'PO5', 'PO6', 'O1', 'O2', 'PZ', 'OZ', 'POZ']
-    fs = 250
     num_subbands = 1  # 不做filterbank
     harmonic_num = 5
-    delay_num = 0  # 数据增强时延迟的个数
-    electrodes_adjacent_matrix = np.loadtxt(
-        root_dir + '/' + dataset_name + '/Benchmark_9ch_normalized_adjacency_matrix.csv', delimiter=',')
-    #interpolation_matrices = np.load(root_dir + '/' + dataset_name + '/interpolation_matrix/9ch_interpolation_matrix.npy')
 
     train_data = []
     test_data = []

@@ -9,14 +9,18 @@
 
 '''
 import os
+import sys
 import numpy as np
 import torch
+
+# Add src directory to path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+
 import utils
 from utils import suggested_weights_filterbank, ITR, add_gaussian_white_noise, filterbank
 from ssvep_tdca import SSVEP_TDCA, SSVEP_EAM_TDCA, SSVEP_CAM_TDCA, SSVEP_ROBUST_TDCA
 from scipy.io import loadmat, savemat
 from dataset import readSubjectData
-from src.plot_methods import plot_eeg
 import time
 from timm.models import create_model
 import argparse

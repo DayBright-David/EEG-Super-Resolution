@@ -27,6 +27,7 @@ Our approach employs a Transformer-based framework with the following components
 2. **Spatial and Temporal Embeddings**: Special attention to both spatial and temporal characteristics
 3. **Random Masking Strategy**: Self-supervised pretraining with random patch masking
 4. **Super-Resolution Decoder**: Reconstructs high-density EEG from sparse electrode data
+![Model Architecture](./docs/model.png)
 
 ## Installation
 
@@ -34,8 +35,8 @@ Our approach employs a Transformer-based framework with the following components
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/eeg-super-resolution.git
-cd eeg-super-resolution
+git clone https://github.com/DayBright-David/EEG-Super-Resolution.git
+cd EEG-Super-Resolution
 ```
 
 2. Create and activate conda environment:
@@ -48,8 +49,8 @@ conda activate ssvep_sr
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/eeg-super-resolution.git
-cd eeg-super-resolution
+git clone https://github.com/DayBright-David/EEG-Super-Resolution.git
+cd EEG-Super-Resolution
 ```
 
 2. Install dependencies:
@@ -236,9 +237,9 @@ The project uses YAML configuration files for easy parameter management. Edit `c
 Our experiments on the THU SSVEP Benchmark demonstrate:
 
 - **High-fidelity reconstruction**: The super-resolved EEG data achieves waveform reconstruction accuracy approaching full 15-channel montage
-- **Improved classification**: Significant improvement in SSVEP classification accuracy when using reconstructed signals
-- **Practical benefits**: Enables high-performance BCI with reduced electrode setup complexity
-
+![Reconstruction Results](./docs/reconstruction.png)
+- **Super-resolution for SSVEP BCI**: Enables high-performance SSVEP BCI with reduced electrode setup complexity
+![SSVEP Results](./docs/super_resolution.png)
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
@@ -251,8 +252,8 @@ If you use this code in your research, please cite our work:
 @article{dai2024enhancing,
   title={Enhancing Brain-Computer Interface Performance via Self-Supervised EEG Super-Resolution},
   author={Dai, Bo and Mou, Xinyu and Zhang, Xinyuan and Zhang, ShanGen and Gao, Xiaorong},
-  journal={Your Journal},
-  year={2024}
+  journal={中国生物医学工程大会},
+  year={2025}
 }
 ```
 
@@ -268,8 +269,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- 📖 [Documentation](docs/)
-- 🐛 [Issue Tracker](https://github.com/your-username/eeg-super-resolution/issues)
-- 💬 [Discussions](https://github.com/your-username/eeg-super-resolution/discussions)
+- 🐛 [Issue Tracker](https://github.com/DayBright-David/EEG-Super-Resolution/issues)
+- 💬 [Discussions](https://github.com/DayBright-David/EEG-Super-Resolution/discussions)
 
 For questions or issues, please open an issue on GitHub or contact the authors.
