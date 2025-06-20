@@ -135,6 +135,7 @@ results/
 output/
 outputs/
 *.png
+!docs/*.png
 *.jpg
 *.jpeg
 *.pdf
